@@ -4,7 +4,9 @@ global using Northwind_Backend.Entities;
 global using Microsoft.AspNetCore.Mvc;
 global using Northwind_Backend.Context;
 global using Microsoft.EntityFrameworkCore;
-using Northwind_Backend.Repositories;
+global using Northwind_Backend.Repositories;
+global using Microsoft.AspNetCore.Http;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +22,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//For DI
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
+builder.Services.AddScoped<IEmployeesRepository, EmployeesRepository>();
 
 var app = builder.Build();
 
