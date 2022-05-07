@@ -49,7 +49,7 @@
             try
             {
                 var addedProduct = await productsRepository.AddProduct(product);
-                if (!addedProduct)
+                if (addedProduct == null)
                     return BadRequest("try again");
                 return Ok(product);
 

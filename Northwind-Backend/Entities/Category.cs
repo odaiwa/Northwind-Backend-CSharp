@@ -15,6 +15,6 @@ namespace Northwind_Backend.Entities
         [MaxLength(100)]
         [Required]
         public string Description { get; set; }
-        public string ImageName { get; set; }
+        public string? ImageName { get; set; }
     }
 }
