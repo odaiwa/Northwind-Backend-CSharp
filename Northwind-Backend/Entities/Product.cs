@@ -15,6 +15,6 @@
         [Range(0, 10000, ErrorMessage = "Please enter number between 0 - 10,000")]
         public int Stock { get; set; }
 
-        public string? ImageNmae { get; set; }
+        public string? ImageName { get; set; }
     }
 }
