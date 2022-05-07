@@ -1,4 +1,8 @@
 ﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Northwind_Backend.Helpers;
+using System.Security.Cryptography;
+using System.Text;
+
 namespace Northwind_Backend.Controllers
 {
     [Route("api/[controller]")]
@@ -35,7 +39,7 @@ namespace Northwind_Backend.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(User user)
+        public async Task<ActionResult<User>> Register(UserDto user)
         {
             var userExists = authRepository.IsUsernameTakenAsync(user.Username);
             if (userExists)
@@ -48,6 +52,8 @@ namespace Northwind_Backend.Controllers
             }
             return BadRequest("username already exists");
         }
+
+
 
     }
 }
