@@ -1,4 +1,5 @@
-﻿namespace Northwind_Backend.Repositories
+﻿
+namespace Northwind_Backend.Repositories
 {
     public interface ICategoriesRepository
     {

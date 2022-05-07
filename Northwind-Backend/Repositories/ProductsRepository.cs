@@ -18,10 +18,15 @@ namespace Northwind_Backend.Repositories
 
             return true;
         }
-        public async Task<bool> AddProduct(Product product)
+        public async Task<Product> AddProduct(Product product)
         {
             _dataContext.Products.Add(product);
-            return await _dataContext.SaveChangesAsync() > 0;
+            if (await _dataContext.SaveChangesAsync() > 0)
+            {
+                var id = product.Id;
+                return await _dataContext.Products.FindAsync(id);
+            }
+            return null;
         }
 
         public async Task<bool> DeleteProductAsync(int id)
@@ -59,7 +64,9 @@ namespace Northwind_Backend.Repositories
             prod.Name = newProduct.Name;
             prod.Price = newProduct.Price;
             prod.Stock = newProduct.Stock;
-            prod.ImageName = newProduct.ImageName;
+            if (newProduct.ImageName != null)
+                prod.ImageName = newProduct.ImageName;
+
             return await _dataContext.SaveChangesAsync()>0;
         }
 

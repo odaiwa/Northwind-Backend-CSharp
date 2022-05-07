@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Northwind_Backend.Repositories;
-
-namespace Northwind_Backend.Controllers
+﻿namespace Northwind_Backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -15,7 +11,7 @@ namespace Northwind_Backend.Controllers
             this.productsRepository = productsRepository;
         }
 
-        [HttpGet("/")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
             try
@@ -23,7 +19,7 @@ namespace Northwind_Backend.Controllers
                 var products = await productsRepository.GetAllProductsAsync();
                 if (products.Count() == 0)
                     return Ok("no products available");
-                return Ok(await productsRepository.GetAllProductsAsync());
+                return Ok(products);
             }
             catch (Exception ex)
             {
@@ -31,8 +27,8 @@ namespace Northwind_Backend.Controllers
             }
         }
 
-        [HttpGet("/{id}")]
-        public async Task<ActionResult<Product>> GetProdductById(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProductById(int id)
         {
             try
             {
@@ -47,7 +43,7 @@ namespace Northwind_Backend.Controllers
             }
         }
 
-        [HttpPost("/")]
+        [HttpPost]
         public async Task<ActionResult<Product>> AddProduct(Product product)
         {
             try
@@ -65,7 +61,7 @@ namespace Northwind_Backend.Controllers
             }
         }
 
-        [HttpPut("/{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, Product product)
         {
             try
@@ -81,7 +77,7 @@ namespace Northwind_Backend.Controllers
             }
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
             try

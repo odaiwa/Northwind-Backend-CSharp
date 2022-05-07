@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Northwind_Backend.Repositories;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
+﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace Northwind_Backend.Controllers
 {
     [Route("api/[controller]")]

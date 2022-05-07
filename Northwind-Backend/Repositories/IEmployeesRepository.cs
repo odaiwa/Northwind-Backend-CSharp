@@ -2,11 +2,11 @@
 {
     public interface IEmployeesRepository
     {
-        Task<ActionResult<IEnumerable<Employee>>> GetAllEmployeesAsync();
-        Task<ActionResult<Employee>> GetEmployeeByIdAsync(int id);
-        Task<ActionResult> AddEmloyeeAsync(Employee employee);
-        Task<ActionResult> UpdateEmployeeAsync (Employee employee);
-        Task<ActionResult> DeleteEmployeeByIdAsync(int id);
+        Task<IEnumerable<Employee>> GetAllEmployeesAsync();
+        Task<Employee> GetEmployeeByIdAsync(int id);
+        Task<Employee> AddEmployeeAsync(Employee employee);
+        Task<bool> DeleteEmployeeAsync(int id);
+        Task<bool> UpdateEmployeeAsync(int id, Employee newEmployee);
 
     }
 }
